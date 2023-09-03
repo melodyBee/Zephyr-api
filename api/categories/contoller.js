@@ -4,7 +4,7 @@ require("dotenv").config();
 
 const getAllCategories = async (req, res) => {
   try {
-    await connect(process.env.MONGO_URI);
+    await connect(process.env.MONGO_URL);
     const allCategories = await Category.find();
     res.json({
       category: allCategories,
@@ -20,7 +20,7 @@ const getCategoryByID = async (req, res) => {
   const { _id } = req.query;
 
   try {
-    await connect(process.env.MONGO_URI);
+    await connect(process.env.MONGO_URL);
     const category = await Category.findOne({ _id });
     res.json({ category });
   } catch (error) {
@@ -39,7 +39,7 @@ const createCategory = async (req, res) => {
     });
   } else {
     try {
-      await connect(process.env.MONGO_URI);
+      await connect(process.env.MONGO_URL);
       const checkExisting = await Category.exists({ CategoryName });
 
       if (checkExisting) {
@@ -70,7 +70,7 @@ const updateCategory = async (req, res) => {
   const update = { CategoryName, CategoryImage };
 
   try {
-    await connect(process.env.MONGO_URI);
+    await connect(process.env.MONGO_URL);
 
     await Category.findOneAndUpdate(filter, update, {
       new: true,
@@ -93,7 +93,7 @@ const deleteCategory = async (req, res) => {
   const { _id } = req.body;
 
   try {
-    await connect(process.env.MONGO_URI);
+    await connect(process.env.MONGO_URL);
     await Category.deleteOne({ _id });
     const category = await Category.find();
     res.status(200).json({
