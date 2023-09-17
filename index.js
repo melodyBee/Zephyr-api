@@ -6,7 +6,7 @@ const port = process.env.SERVER_PORT || 3000;
 const cors = require("cors");
 const mongoURI = process.env.MONGO_URL;
 const corsOptions = {
-  origin: "*", // Allow requests from any origin
+  origin: "*",
   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
   preflightContinue: false,
   optionsSuccessStatus: 204,
