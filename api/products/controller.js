@@ -7,8 +7,6 @@ const addProducts = async (req, res) => {
     ProductsDescription,
     ProductsPrice,
     ProductsRatings,
-    ProductsCategories,
-    ProductsBrand,
   } = req.body;
 
   if (
@@ -16,9 +14,7 @@ const addProducts = async (req, res) => {
     !ProductsImage ||
     !ProductsDescription ||
     !ProductsPrice ||
-    !ProductsRatings ||
-    !ProductsCategories ||
-    !ProductsBrand
+    !ProductsRatings
   ) {
     return res.status(400).json({
       message: "Missing Required Fields",
@@ -40,8 +36,6 @@ const addProducts = async (req, res) => {
       ProductsRatings,
       ProductsPrice,
       ProductsDescription,
-      ProductsCategories,
-      ProductsBrand,
     });
     return res.status(201).json({
       message: "Product Created",
@@ -96,8 +90,6 @@ const updateProducts = async (req, res) => {
     ProductsDescription,
     ProductsPrice,
     ProductsRatings,
-    ProductsCategories,
-    ProductsBrand,
   } = req.body;
 
   try {
@@ -109,8 +101,6 @@ const updateProducts = async (req, res) => {
         ProductsDescription,
         ProductsPrice,
         ProductsRatings,
-        ProductsCategories,
-        ProductsBrand,
       },
       { new: true }
     );

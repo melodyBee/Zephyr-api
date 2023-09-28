@@ -22,14 +22,6 @@ const ProductsSchema = new Schema({
     type: String,
     required: true,
   },
-  ProductsCategories: {
-    type: String,
-    required: true,
-  },
-  ProductsBrand: {
-    type: String,
-    required: true,
-  },
 });
 
 const Products = model("products", ProductsSchema);
